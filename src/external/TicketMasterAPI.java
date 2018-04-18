@@ -226,6 +226,7 @@ public class TicketMasterAPI {
 	/**
 	 * Main entry for sample TicketMaster API requests.
 	 */
+	// Unit test for working API 
 	public static void main(String[] args) {
 		TicketMasterAPI tmApi = new TicketMasterAPI();
 		// Mountain View, CA

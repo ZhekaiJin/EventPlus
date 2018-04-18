@@ -2,7 +2,7 @@ package external;
 
 public class GeoHash {
 
-    private static final String BASE_32 = "0123456789bcdefghjkmnpqrstuvwxyz";
+    private static final String BASE_32 = "0123456789bcdefghjkmnpqrstuvwxyz"; //reproduce this key by register to TicketMaster API 
 
     private static int divideRangeByValue(double value, double[] range) {
         double mid = middle(range);
