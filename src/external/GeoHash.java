@@ -18,6 +18,7 @@ public class GeoHash {
     private static double middle(double[] range) {
         return (range[0] + range[1]) / 2;
     }
+    
     public static String encodeGeohash(double latitude, double longitude, int precision) {
         double[] latRange = new double[]{-90.0, 90.0};
         double[] lonRange = new double[]{-180.0, 180.0};
