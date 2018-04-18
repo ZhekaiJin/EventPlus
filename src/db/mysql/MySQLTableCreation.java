@@ -1,0 +1,49 @@
+package db.mysql;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
+
+public class MySQLTableCreation {
+	// Run this as Java application to reset db schema.
+	public static void main(String[] args) {
+		try {
+			// This is java.sql.Connection. Not com.mysql.jdbc.Connection.
+			Connection conn = null;
+
+			// Step 1 Connect to MySQL.
+			try {
+				System.out.println("Connecting to " + MySQLDBUtil.URL);
+				Class.forName("com.mysql.jdbc.Driver").getConstructor().newInstance(); // register himself into the driver's license, called in static block, use class.forname() to force it 
+				conn = DriverManager.getConnection(MySQLDBUtil.URL);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (conn == null) {
+				return;
+			}
+			//Step 2 Drop tables in case they exist
+			Statement stmt = conn.createStatement();
+			String sql = "DROP TABLE IF EXISTS category"; //category foreign key to users
+			stmt.executeUpdate(sql);
+			
+			sql = "DROP TABLE IF EXISTS history"; // history foreign key to users
+			stmt.executeUpdate(sql);
+			
+			
+			sql = "DROP TABLE IF EXISTS items";
+			stmt.executeUpdate(sql);
+			
+			
+			sql = "DROP TABLE IF EXISTS users";
+			stmt.executeUpdate(sql);
+
+			
+
+			System.out.println("Import is done successfully.");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
