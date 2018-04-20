@@ -77,6 +77,7 @@ public class Item {
 		this.imageUrl = builder.imageUrl;
 		this.url = builder.url;
 		this.distance = builder.distance;
+		this.itemId = builder.itemId;
 	}
 	// auto generated get && no SET given since data are given by API and not designed to be changed 
 	public String getItemId() {

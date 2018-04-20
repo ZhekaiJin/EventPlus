@@ -201,6 +201,7 @@ public class TicketMasterAPI {
 				builder.setDistance(event.getDouble("distance"));
 			}
 			
+			
 			builder.setCategories(getCategories(event));
 			builder.setAddress(getAddress(event));
 			builder.setImageUrl(getImageUrl(event));

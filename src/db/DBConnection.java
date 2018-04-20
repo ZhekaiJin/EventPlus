@@ -3,6 +3,7 @@ package db;
 import java.util.List;
 import java.util.Set;
 
+import db.mysql.MySQLConnection;
 import entity.Item;
 
 public interface DBConnection {
@@ -15,7 +16,7 @@ public interface DBConnection {
 		public static DBConnection getConnection (String db) throws IllegalArgumentException {
 			switch (db) {
 				case "mysql":
-					return null; // new connection method for mysql
+					return new MySQLConnection();
 				case "mongodb":
 					return null; // new connection method for mongodb
 				default:
