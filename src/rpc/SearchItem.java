@@ -3,6 +3,7 @@ package rpc;
 import java.io.IOException;
 //import java.io.PrintWriter;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import db.DBConnection;
-import db.DBConnection.DBConnectionFactory;
+import db.DBConnectionFactory;
 import entity.Item;
 import external.TicketMasterAPI;
 
@@ -39,6 +40,7 @@ public class SearchItem extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String userId = request.getParameter("user_id");
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lon = Double.parseDouble(request.getParameter("lon"));
 		
@@ -47,6 +49,7 @@ public class SearchItem extends HttpServlet {
 		
 		DBConnection connection = DBConnectionFactory.getConnection();
 		List<Item> items = connection.searchItems(lat, lon, keyword);
+		Set<String> favorite = connection.getFavoriteItemIds(userId);
         connection.close(); 
 
 
@@ -54,6 +57,7 @@ public class SearchItem extends HttpServlet {
 		try {
 			for (Item item : items) {
 				JSONObject obj = item.toJSONObject();
+				obj.put("favorite", favorite.contains(item.getItemId()));
 				array.put(obj);
 			}
 		} catch (Exception e) {
