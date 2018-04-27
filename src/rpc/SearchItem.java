@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import db.DBConnection;
 import db.DBConnectionFactory;
 import entity.Item;
-import external.TicketMasterAPI;
 
 /**
  * Servlet implementation class SearchItem
