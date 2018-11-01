@@ -61,7 +61,10 @@ public class SearchItem extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} finally {
+	   		 connection.close(); // always close the connection after operation 
+        }
+
 		RpcHelper.writeJsonArray(response, array);
 	}
 

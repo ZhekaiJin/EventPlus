@@ -27,8 +27,6 @@ public class MySQLConnection implements DBConnection{
 		}
 	}
 
-	
-
 	@Override
 	public void close() {
 		// TODO Auto-generated method stub
@@ -45,16 +43,18 @@ public class MySQLConnection implements DBConnection{
 	public void setFavoriteItems(String userId, List<String> itemIds) {
 		// TODO Auto-generated method stub
 		if (conn == null) {
+			System.err.println("Db Connection Failed.");
 			return;
 		}
-		String sql = "INSERT IGNORE INTO history (user_id, item_id) VALUES (?,?)";
 		try {
-			for (String itemId : itemIds) {
-				PreparedStatement statement = conn.prepareStatement(sql);
-				statement.setString(1, userId);
-				statement.setString(2, itemId);
-				statement.executeUpdate();
-			}		
+			 String sql = "INSERT IGNORE INTO history(user_id, item_id) VALUES (?, ?)";
+	   		 PreparedStatement ps = conn.prepareStatement(sql);
+	   		 ps.setString(1, userId);
+	   		 for (String itemId : itemIds) {
+	   			 ps.setString(2, itemId);
+	   			 ps.execute();
+	   		 }
+	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,16 +64,17 @@ public class MySQLConnection implements DBConnection{
 	public void unsetFavoriteItems(String userId, List<String> itemIds) {
 		// TODO Auto-generated method stub
 		if (conn == null) {
+	   		 System.err.println("DB connection failed");
 			return;
 		}
-		String sql = "DELETE FROM history WHERE user_id = ? AND item_id = ?";
 		try {
-			for (String itemId : itemIds) {
-				PreparedStatement statement = conn.prepareStatement(sql);
-				statement.setString(1, userId);
-				statement.setString(2, itemId);
-				statement.executeUpdate();
-			}		
+			 String sql = "DELETE FROM history WHERE user_id = ? AND item_id = ?";
+	   		 PreparedStatement ps = conn.prepareStatement(sql);
+	   		 ps.setString(1, userId);
+	   		 for (String itemId : itemIds) {
+	   			 ps.setString(2, itemId);
+	   			 ps.execute();
+	   		 }	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

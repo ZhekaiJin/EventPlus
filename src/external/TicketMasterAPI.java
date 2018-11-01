@@ -17,7 +17,7 @@ import entity.Item;
 import entity.Item.ItemBuilder;
 
 public class TicketMasterAPI {
-	private static final String URL = "https://app.ticketmaster.com/discovery/v2/events.json";
+	private static final String URL = "http://app.ticketmaster.com/discovery/v2/events.json";
 	private static final String DEFAULT_KEYWORD = ""; // no restriction
 	private static final String API_KEY = "zXzb16S5qd0tmAAN3rrMMjKTd6yXm3rz";
     public List<Item> search(double lat, double lon, String keyword) {
