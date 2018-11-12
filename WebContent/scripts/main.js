@@ -184,7 +184,7 @@
 
     /**
      * A helper function that makes a navigation button active
-     * 
+     *
      * @param btnId -
      *            The id of the navigation button
      */
@@ -221,7 +221,7 @@
 
     /**
      * A helper function that creates a DOM element <tag options...>
-     * 
+     *
      * @param tag
      * @param options
      * @returns
@@ -253,7 +253,7 @@
 
     /**
      * AJAX helper
-     * 
+     *
      * @param method -
      *            GET|POST|PUT|DELETE
      * @param url -
@@ -396,10 +396,10 @@
 
     /**
      * API #4 Toggle favorite (or visited) items
-     * 
+     *
      * @param item_id -
      *            The item business id
-     * 
+     *
      * API end point: [POST]/[DELETE] /Dashi/history request json data: {
      * user_id: 1111, visited: [a_list_of_business_ids] }
      */
@@ -434,7 +434,7 @@
 
     /**
      * List items
-     * 
+     *
      * @param items -
      *            An array of item JSON objects
      */
@@ -450,7 +450,7 @@
 
     /**
      * Add item to the list
-     * 
+     *
      * @param itemList -
      *            The
      *            <ul id="item-list">
